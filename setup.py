@@ -5,7 +5,7 @@ setup(
     version="0.1",
     packages=find_packages(),
     install_requires=[
-        "ftfy",
-        "emoji==1.7",
+        "ftfy==6.1.1",
+        "emoji==1.4.2",
     ],
 )
