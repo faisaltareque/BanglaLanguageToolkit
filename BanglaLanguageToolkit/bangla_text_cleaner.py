@@ -122,6 +122,8 @@ class BanglaTextCleaner:
         return re.sub(self.regex_patterns["BANGLA_DIGIT_REGEX"], replace_with, text)
 
     def remove_punctuations(self, text, replace_with=""):
+        if len(replace_with) > 1:
+            replace_with = " "+replace_with
         for punc in self.bangla_character.punctuations:
             text = text.replace(punc, replace_with)        
         return text
