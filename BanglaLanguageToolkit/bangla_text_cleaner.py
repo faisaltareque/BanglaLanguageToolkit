@@ -23,7 +23,7 @@ class BanglaTextCleaner:
             replace_with_email="<EMAIL>",
             replace_with_number="<NUMBER>",
             replace_with_digit="<DIGIT>",
-            replace_with_punct = "<PUNC>"
+            replace_with_punct = " <PUNC>"
         ):
         """
         Initialize BanglaTextCleaner class
@@ -123,9 +123,10 @@ class BanglaTextCleaner:
 
     def remove_punctuations(self, text, replace_with=""):
         if len(replace_with) > 1:
-            replace_with = " "+replace_with
+            replace_with = " "+replace_with+" "
         for punc in self.bangla_character.punctuations:
-            text = text.replace(punc, replace_with)        
+            text = text.replace(punc, replace_with)     
+        text = re.sub(r'\s+', ' ', text)
         return text
     
     def clean(self, text: str) -> str:
