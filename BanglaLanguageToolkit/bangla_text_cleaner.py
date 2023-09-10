@@ -4,7 +4,7 @@ import unicodedata
 from ftfy import fix_text
 from unicodedata import category, normalize
 from emoji import UNICODE_EMOJI, demojize, emojize
-from bangla_text_cleaner.bangla_character import BanglaCharacter
+from BanglaLanguageToolkit.bangla_character import BanglaCharacter
 
 
 class BanglaTextCleaner:
@@ -123,7 +123,6 @@ class BanglaTextCleaner:
 
     def remove_punctuations(self, text, replace_with=""):
         for punc in self.bangla_character.punctuations:
-            print(punc)
             text = text.replace(punc, replace_with)        
         return text
     
@@ -137,8 +136,6 @@ class BanglaTextCleaner:
             text = self.fix_bad_unicode(text)
         if self.unicode_norm:
             text = normalize(self.unicode_norm_form, text)
-        if self.remove_punct:
-            text = self.remove_punctuations(text, replace_with=self.replace_with_punct)
         if self.remove_url:
             text = self.replace_urls(text, replace_with=self.replace_with_url)
         if self.remove_email:
@@ -149,6 +146,8 @@ class BanglaTextCleaner:
             text = self.remove_number_or_digit(text, replace_with=self.replace_with_digit)
         if self.remove_number:
             text = self.remove_number_or_digit(text, replace_with=self.replace_with_number)
+        if self.remove_punct:
+            text = self.remove_punctuations(text, replace_with=self.replace_with_punct)
         return text
     
     def is_bangla_word(self, word: str) -> bool:
