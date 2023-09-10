@@ -173,10 +173,14 @@ class BanglaTextCleaner:
             return replace_with
         return word
     
-    def replace_foreign_words(self, text: str, replace_with="<FOREIGN>", keep_special_tokens=False):
+    def replace_foreign_words(self, text: str, replace_with="<FOREIGN>", keep_special_tokens=False, replace_multiple_foreign_words=True):
         """
         Replace foreign words with ``replace_with`` str.
         """
         words = text.split()
         words = [self.replace_foreign_word(word, replace_with, keep_special_tokens) for word in words]
-        return " ".join(words)
+        text = " ".join(words)
+        if replace_multiple_foreign_words:
+            text = re.sub(r'(<FOREIGN>\s)+', ' <FOREIGN> ', text)
+        text = re.sub(r'\s+', ' ', text)
+        return text
