@@ -169,6 +169,8 @@ class BanglaTextCleaner:
         if keep_special_tokens:
             if word in ["<URL>", "<EMAIL>", "<NUMBER>", "<DIGIT>", "<PUNC>"]:
                 return word
+            if "<URL>" in word or "<EMAIL>" in word or "<NUMBER>" in word or "<DIGIT>" in word or "<PUNC>" in word:
+                return word
         if not self.is_bangla_word(word):
             return replace_with
         return word
