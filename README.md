@@ -19,7 +19,7 @@ pip install git+https://github.com/faisaltareque/BanglaLanguageToolkit.git
 ## Usage
 ### Code
 ```python
-from BanglaLanguageToolkit.bangla_text_cleaner import BanglaTextCleaner
+from BanglaLanguageToolkit import BanglaTextCleaner
 cleaner = BanglaTextCleaner(remove_emoji=True, remove_email=True, remove_url=True, remove_punct=True)
 
 text = "সে কিভাবে রিগামের সাথে সম্পর্কিত? How is he related to Regum?, www.google.com, demo@gmail.com."
@@ -34,7 +34,7 @@ print(text)
 
 ### Code
 ```python
-from BanglaLanguageToolkit.bangla_text_cleaner import BanglaTextCleaner
+from BanglaLanguageToolkit import BanglaTextCleaner
 cleaner = BanglaTextCleaner(remove_emoji=True, remove_email=True, remove_url=True, remove_punct=True)
 
 text = "সে কিভাবে রিগামের সাথে সম্পর্কিত? How is he related to Regum?, www.google.com, demo@gmail.com."
